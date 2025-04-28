@@ -57,10 +57,11 @@ public class AdvCharacter : MonoBehaviour
             Debug.Log("food: " + advRoomEvent.food + " water: " + advRoomEvent.water);
         }
 
-        if (move == 0 && eventList.endState == true && endCheck == false)
+        if ((move == 0 && eventList.endState == true && endCheck == false) || (move == 0 && advRoomEvent.endEvent==true && endCheck == false))
         {
             Debug.Log("Adventure End");
             endCheck = true;
+            advRoomEvent.endEvent = false;
             showResult();
         }
     }
@@ -69,16 +70,17 @@ public class AdvCharacter : MonoBehaviour
     {
         if (other.CompareTag("Normal"))
         {
-            Debug.Log("Normal");
+            advRoomEvent.endEvent = false;
             advRoomEvent.getNormal();
         }
         if (other.CompareTag("Empty"))
         {
-            Debug.Log("Empty");
+            advRoomEvent.endEvent = false;
+            advRoomEvent.getEmpty();
         }
         if (other.CompareTag("Event"))
         {
-            Debug.Log("Event");
+            advRoomEvent.endEvent = false;
             advRoomEvent.getEvent();
             moveLock = true;
         }

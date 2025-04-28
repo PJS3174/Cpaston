@@ -9,6 +9,7 @@ public class AdvRoomEvent : MonoBehaviour
     public int gun = 0;
 
     int randInt = 0;
+    public bool endEvent;
 
     public GameObject GM;
     public GameObject Character;
@@ -39,12 +40,13 @@ public class AdvRoomEvent : MonoBehaviour
         {
             gun++;
         }
+        endEvent = true;
     }
 
     public void getEmpty()
     {
-
         Debug.Log("∫Û πÊ¿‘¥œ¥Ÿ.");
+        endEvent = true;
     }
 
     public void getEvent()

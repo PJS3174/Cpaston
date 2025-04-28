@@ -153,8 +153,10 @@ public class EventList : MonoBehaviour
     {
         eventState = false;
         endState = false;
+
         index = 0; // 인덱스 초기화
         eventText.text = ""; // 텍스트 초기화
+
         Debug.Log("이벤트 리스트 정상");
         randInt = Random.Range(0, 10);
 
