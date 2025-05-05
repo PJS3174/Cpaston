@@ -6,6 +6,9 @@ public class RoomEvent : MonoBehaviour
     public int day; //현재 날짜 표시
     public bool isAdv; //현재 모험중인 캐릭터가 있는지 체크
 
+    public Camera roomCam;  // 방 카메라
+    public Camera advCam; // 모험 카메라
+
     public TextMeshProUGUI DayText; //현재 날짜 표시 text
 
     public GameObject Character1; //캐릭터 정보
@@ -15,9 +18,11 @@ public class RoomEvent : MonoBehaviour
     Status cha2;
     Status cha3;
 
-
     void Start()
     {
+        roomCam.enabled = true;
+        advCam.enabled = false;
+
         day = 1;
         cha1 = Character1.GetComponent<Status>();
         cha2 = Character2.GetComponent<Status>();

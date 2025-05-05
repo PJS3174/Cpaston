@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 //방 생성 스크립트
@@ -10,6 +12,9 @@ public class CoverSpwan : MonoBehaviour
     public float xSize = 1f;
     public float ySize = 1f;
     int randInt = 0;
+
+    private List<GameObject> Covers = new List<GameObject>();
+
     public void setCover()
     {
         for (float x = 37.5f; x <= 43.5f; x += xSize)
@@ -21,20 +26,35 @@ public class CoverSpwan : MonoBehaviour
                 if (Mathf.Approximately(x, 37.5f) && Mathf.Approximately(y, 0.5f)) // 캐릭터 시작 좌표만 제외
                     continue;
 
+                GameObject cover = null;
+
                 randInt = Random.Range(0, 10);
                 if (randInt <= 3)
                 {
-                    Instantiate(Normal, spawnPos, Quaternion.identity);
+                    cover = Instantiate(Normal, spawnPos, Quaternion.identity);
                 }
                 else if (randInt > 3 && randInt <= 6)
                 {
-                    Instantiate(Empty, spawnPos, Quaternion.identity);
+                    cover = Instantiate(Empty, spawnPos, Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(Event, spawnPos, Quaternion.identity);
+                    cover = Instantiate(Event, spawnPos, Quaternion.identity);
+                }
+
+                if (cover != null)
+                {
+                    Covers.Add(cover);
                 }
             }
+        }
+    }
+
+    public void deleteCover()
+    {
+        for(int i =0; i<Covers.Count; i++)
+        {
+            Destroy(Covers[i]);
         }
     }
 

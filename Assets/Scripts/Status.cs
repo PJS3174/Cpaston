@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
-    public string name;
+    public string CharacterName;
     
     public int hp;
     public int mental;
